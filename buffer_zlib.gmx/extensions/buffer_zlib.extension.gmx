@@ -146,7 +146,7 @@
           <name>buffer_deflate</name>
           <externalName>buffer_deflate</externalName>
           <kind>11</kind>
-          <help>buffer_deflate(buffer, offset, size, level, ?outbuf)</help>
+          <help>buffer_deflate(buffer, offset, size, compression_level[1..9], ?out_buffer) : Compresses a part of a buffer to a new or given buffer.</help>
           <returnType>2</returnType>
           <argCount>-1</argCount>
           <args/>
@@ -155,7 +155,7 @@
           <name>buffer_inflate</name>
           <externalName>buffer_inflate</externalName>
           <kind>11</kind>
-          <help>buffer_inflate(buffer, offset, size, ?outbuf)</help>
+          <help>buffer_inflate(buffer, offset, size, ?out_buffer) : Decompresses a part of a buffer to a new or given buffer.</help>
           <returnType>2</returnType>
           <argCount>-1</argCount>
           <args/>
@@ -168,12 +168,27 @@
           <hidden>0</hidden>
         </constant>
         <constant>
+          <name>buffer_zlib_status /* Raw zlib status ID (in case of errors) */</name>
+          <value>buffer_zlib_get_status()</value>
+          <hidden>0</hidden>
+        </constant>
+        <constant>
           <name>buffer_zlib_chunk_size</name>
           <value>global.g_buffer_zlib_chunk_size</value>
           <hidden>0</hidden>
         </constant>
         <constant>
+          <name>buffer_zlib_chunk_size /* Number of bytes to process at once in inflate/deflate */</name>
+          <value>global.g_buffer_zlib_chunk_size</value>
+          <hidden>0</hidden>
+        </constant>
+        <constant>
           <name>buffer_zlib_available</name>
+          <value>global.g_buffer_zlib_available</value>
+          <hidden>0</hidden>
+        </constant>
+        <constant>
+          <name>buffer_zlib_available /* Whether the buffer_zlib extension is successfully loaded */</name>
           <value>global.g_buffer_zlib_available</value>
           <hidden>0</hidden>
         </constant>

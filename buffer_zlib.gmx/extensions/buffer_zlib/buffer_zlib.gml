@@ -1,13 +1,13 @@
 #define buffer_zlib_init
 /// ()
-//#global buffer_zlib_chunk_size:
-//#global buffer_zlib_available:
-//#buffer_zlib_status buffer_zlib_get_status():
+//#global buffer_zlib_chunk_size: Number of bytes to process at once in inflate/deflate
+//#global buffer_zlib_available: Whether the buffer_zlib extension is successfully loaded
+//#buffer_zlib_status buffer_zlib_get_status(): Raw zlib status ID (in case of errors)
 buffer_zlib_available = buffer_zlib_init_raw();
 buffer_zlib_chunk_size = 16384;
 
 #define buffer_deflate
-/// (buffer, offset, size, level, ?outbuf):
+/// (buffer, offset, size, compression_level[1..9], ?out_buffer): Compresses a part of a buffer to a new or given buffer.
 var l_source = argument[0];
 var l_length = buffer_get_size(l_source);
 var l_offset = argument[1];
@@ -45,7 +45,7 @@ buffer_seek(l_result, buffer_seek_start, l_length - l_avail);
 return l_result;
 
 #define buffer_inflate
-/// (buffer, offset, size, ?outbuf):
+/// (buffer, offset, size, ?out_buffer): Decompresses a part of a buffer to a new or given buffer.
 var l_source = argument[0];
 var l_length = buffer_get_size(l_source);
 var l_offset = argument[1];
