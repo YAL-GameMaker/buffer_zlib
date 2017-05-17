@@ -2,8 +2,8 @@
 <extension>
   <name>buffer_zlib</name>
   <version>1.0.0</version>
-  <packageID></packageID>
-  <ProductID></ProductID>
+  <packageID>cc.yal.zlib</packageID>
+  <ProductID>AF0B29F3371B35D0464AFFC1FD7C9627</ProductID>
   <date>18/02/17</date>
   <license>Proprietary</license>
   <description></description>
@@ -25,11 +25,16 @@
   <iosThirdPartyFrameworks/>
   <ConfigOptions>
     <Config name="Default">
-      <CopyToMask>113497714299118</CopyToMask>
+      <CopyToMask>105554172285166</CopyToMask>
     </Config>
   </ConfigOptions>
   <androidPermissions/>
-  <IncludedResources/>
+  <IncludedResources>
+    <Resource>Fonts\fnt_zlib_test</Resource>
+    <Resource>Objects\obj_zlib_test</Resource>
+    <Resource>Rooms\rm_zlib_test</Resource>
+    <Resource>Included Files\buffer_zlib_manual.html</Resource>
+  </IncludedResources>
   <files>
     <file>
       <filename>buffer_zlib.dll</filename>

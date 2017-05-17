@@ -10,6 +10,14 @@
 #pragma region Status
 int buffer_zlib_status = Z_OK;
 dllx double buffer_zlib_get_status() { return buffer_zlib_status; }
+///:
+enum buffer_zlib_status {
+    buffer_zlib_status_ok = 0,
+    buffer_zlib_status_stream_error = -2,
+    buffer_zlib_status_data_error = -3,
+    buffer_zlib_status_memory_error = -4,
+    buffer_zlib_status_buffer_error = -5,
+};
 #pragma endregion
 
 #pragma region Deflate

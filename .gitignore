@@ -34,3 +34,6 @@ help.rtf
 /buffer_zlib/zlib.h
 /buffer_zlib/zutil.c
 /buffer_zlib/zutil.h
+export/*.gmez
+export/*.gmz
+export/*.png
