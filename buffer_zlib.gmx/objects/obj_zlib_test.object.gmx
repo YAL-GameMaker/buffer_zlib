@@ -69,13 +69,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font(fnt_test);
+            <string>draw_set_font(fnt_zlib_test);
 draw_set_color(c_white);
-if (buffer_zlib_available)
-draw_text(5, 5, 
-'[1] Compress
-[2] Decompress
-'); else draw_text(5, 5, "Extension is not loaded.");
+draw_text(5, 5, '[1] Compress#[2] Decompress');
 var k1 = keyboard_check_pressed(ord("1"));
 var k2 = keyboard_check_pressed(ord("2"));
 if (k1 || k2) {
@@ -86,7 +82,7 @@ if (k1 || k2) {
         b0 = buffer_load(s0);
         if (b0 &lt; 0) { show_message("Couldn't load buffer."); break; }
         if (k1) {
-            b1 = buffer_deflate(b0, 0, buffer_get_size(b0), 1);
+            b1 = buffer_deflate(b0, 0, buffer_get_size(b0), 7);
             if (b1 &lt; 0) {
                 show_message("Couldn't deflate, error ID: " + string(buffer_zlib_status));
                 break;

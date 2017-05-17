@@ -46,15 +46,6 @@
       <ProxyFiles/>
       <functions>
         <function>
-          <name>buffer_zlib_get_status</name>
-          <externalName>buffer_zlib_get_status</externalName>
-          <kind>11</kind>
-          <help></help>
-          <returnType>2</returnType>
-          <argCount>0</argCount>
-          <args/>
-        </function>
-        <function>
           <name>buffer_deflate_raw1</name>
           <externalName>buffer_deflate_raw1</externalName>
           <kind>11</kind>
@@ -116,8 +107,43 @@
           <argCount>0</argCount>
           <args/>
         </function>
+        <function>
+          <name>buffer_zlib_get_status</name>
+          <externalName>buffer_zlib_get_status</externalName>
+          <kind>11</kind>
+          <help></help>
+          <returnType>2</returnType>
+          <argCount>0</argCount>
+          <args/>
+        </function>
       </functions>
-      <constants/>
+      <constants>
+        <constant>
+          <name>buffer_zlib_status_ok</name>
+          <value>0</value>
+          <hidden>0</hidden>
+        </constant>
+        <constant>
+          <name>buffer_zlib_status_stream_error</name>
+          <value>-2</value>
+          <hidden>0</hidden>
+        </constant>
+        <constant>
+          <name>buffer_zlib_status_data_error</name>
+          <value>-3</value>
+          <hidden>0</hidden>
+        </constant>
+        <constant>
+          <name>buffer_zlib_status_memory_error</name>
+          <value>-4</value>
+          <hidden>0</hidden>
+        </constant>
+        <constant>
+          <name>buffer_zlib_status_buffer_error</name>
+          <value>-5</value>
+          <hidden>0</hidden>
+        </constant>
+      </constants>
     </file>
     <file>
       <filename>buffer_zlib.gml</filename>
@@ -163,6 +189,21 @@
       </functions>
       <constants>
         <constant>
+          <name>buffer_zlib_chunk_size</name>
+          <value>global.g_buffer_zlib_chunk_size</value>
+          <hidden>0</hidden>
+        </constant>
+        <constant>
+          <name>buffer_zlib_available</name>
+          <value>global.g_buffer_zlib_available</value>
+          <hidden>0</hidden>
+        </constant>
+        <constant>
+          <name>macro</name>
+          <value>buffer_zlib_status buffer_zlib_get_status()</value>
+          <hidden>0</hidden>
+        </constant>
+        <constant>
           <name>buffer_zlib_status</name>
           <value>buffer_zlib_get_status()</value>
           <hidden>0</hidden>
@@ -173,18 +214,8 @@
           <hidden>0</hidden>
         </constant>
         <constant>
-          <name>buffer_zlib_chunk_size</name>
-          <value>global.g_buffer_zlib_chunk_size</value>
-          <hidden>0</hidden>
-        </constant>
-        <constant>
           <name>buffer_zlib_chunk_size /* Number of bytes to process at once in inflate/deflate */</name>
           <value>global.g_buffer_zlib_chunk_size</value>
-          <hidden>0</hidden>
-        </constant>
-        <constant>
-          <name>buffer_zlib_available</name>
-          <value>global.g_buffer_zlib_available</value>
           <hidden>0</hidden>
         </constant>
         <constant>

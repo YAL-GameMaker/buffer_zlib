@@ -3,6 +3,25 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
+  <datafiles number="1" name="datafiles">
+    <datafile>
+      <name>buffer_zlib_manual.html</name>
+      <exists>-1</exists>
+      <size>20981</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>0</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>buffer_zlib_manual.html</filename>
+    </datafile>
+  </datafiles>
   <NewExtensions>
     <extension index="0">extensions\buffer_zlib</extension>
   </NewExtensions>
@@ -10,17 +29,15 @@
   <sprites name="sprites"/>
   <backgrounds name="background"/>
   <paths name="paths"/>
-  <scripts name="scripts">
-    <script>scripts\trace.gml</script>
-  </scripts>
+  <scripts name="scripts"/>
   <fonts name="fonts">
-    <font>fonts\fnt_test</font>
+    <font>fonts\fnt_zlib_test</font>
   </fonts>
   <objects name="objects">
-    <object>objects\obj_test</object>
+    <object>objects\obj_zlib_test</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_test</room>
+    <room>rooms\rm_zlib_test</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
