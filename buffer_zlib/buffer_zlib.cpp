@@ -38,11 +38,11 @@ dllx double buffer_deflate_raw2(char* out, double start, double till) {
 
 #pragma region Inflate
 z_stream buffer_inflate_stream;
-dllx double buffer_inflate_raw1(char* source, double size) {
+dllx double buffer_inflate_raw1(char* source, double offset, double size) {
     buffer_zlib_status = inflateInit(&buffer_inflate_stream);
     if (buffer_zlib_status != Z_OK) return 0;
     buffer_inflate_stream.avail_in = (uInt)size;
-    buffer_inflate_stream.next_in = (Byte*)source;
+    buffer_inflate_stream.next_in = (Byte*)(source + (size_t)offset);
     return 1;
 }
 dllx double buffer_inflate_raw2(char* out, double start, double till) {
@@ -56,11 +56,11 @@ dllx double buffer_inflate_raw2(char* out, double start, double till) {
         case Z_DATA_ERROR:
         case Z_MEM_ERROR:
         case Z_STREAM_ERROR:
-            deflateEnd(&buffer_inflate_stream);
+            inflateEnd(&buffer_inflate_stream);
             return -1;
     }
-    if (buffer_inflate_stream.avail_out == 0) deflateEnd(&buffer_inflate_stream);
-    return size - buffer_inflate_stream.avail_out;
+    if (buffer_inflate_stream.avail_out != 0) inflateEnd(&buffer_inflate_stream);
+    return buffer_inflate_stream.avail_out;
 }
 #pragma endregion
 
