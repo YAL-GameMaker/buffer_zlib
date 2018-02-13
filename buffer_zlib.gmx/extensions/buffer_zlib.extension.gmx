@@ -2,15 +2,15 @@
 <extension>
   <name>buffer_zlib</name>
   <version>1.0.0</version>
-  <packageID>cc.yal.zlib</packageID>
-  <ProductID>AF0B29F3371B35D0464AFFC1FD7C9627</ProductID>
+  <packageID></packageID>
+  <ProductID></ProductID>
   <date>18/02/17</date>
   <license>Proprietary</license>
   <description></description>
   <helpfile></helpfile>
   <installdir></installdir>
   <classname></classname>
-  <androidclassname></androidclassname>
+  <androidclassname>BufferZlibExt</androidclassname>
   <sourcedir></sourcedir>
   <androidsourcedir></androidsourcedir>
   <macsourcedir></macsourcedir>
@@ -25,16 +25,11 @@
   <iosThirdPartyFrameworks/>
   <ConfigOptions>
     <Config name="Default">
-      <CopyToMask>105554172285166</CopyToMask>
+      <CopyToMask>105553895391470</CopyToMask>
     </Config>
   </ConfigOptions>
   <androidPermissions/>
-  <IncludedResources>
-    <Resource>Fonts\fnt_zlib_test</Resource>
-    <Resource>Objects\obj_zlib_test</Resource>
-    <Resource>Rooms\rm_zlib_test</Resource>
-    <Resource>Included Files\buffer_zlib_manual.html</Resource>
-  </IncludedResources>
+  <IncludedResources/>
   <files>
     <file>
       <filename>buffer_zlib.dll</filename>
@@ -45,7 +40,7 @@
       <uncompress>0</uncompress>
       <ConfigOptions>
         <Config name="Default">
-          <CopyToMask>9223372036854775807</CopyToMask>
+          <CopyToMask>105553893294310</CopyToMask>
         </Config>
       </ConfigOptions>
       <ProxyFiles/>
@@ -191,6 +186,15 @@
           <argCount>-1</argCount>
           <args/>
         </function>
+        <function>
+          <name>buffer_zlib_get_address</name>
+          <externalName>buffer_zlib_get_address</externalName>
+          <kind>11</kind>
+          <help>buffer_zlib_get_address(buffer)</help>
+          <returnType>2</returnType>
+          <argCount>-1</argCount>
+          <args/>
+        </function>
       </functions>
       <constants>
         <constant>
@@ -226,6 +230,120 @@
         <constant>
           <name>buffer_zlib_available /* Whether the buffer_zlib extension is successfully loaded */</name>
           <value>global.g_buffer_zlib_available</value>
+          <hidden>0</hidden>
+        </constant>
+      </constants>
+    </file>
+    <file>
+      <filename>buffer_zlib.ext</filename>
+      <origname>extensions\buffer_zlib.ext</origname>
+      <init></init>
+      <final></final>
+      <kind>4</kind>
+      <uncompress>0</uncompress>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>2097160</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <ProxyFiles/>
+      <functions>
+        <function>
+          <name>buffer_deflate_raw1</name>
+          <externalName>bufferDeflateRaw1</externalName>
+          <kind>11</kind>
+          <help></help>
+          <returnType>2</returnType>
+          <argCount>4</argCount>
+          <args>
+            <arg>1</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>buffer_deflate_raw2</name>
+          <externalName>bufferDeflateRaw2</externalName>
+          <kind>11</kind>
+          <help></help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>1</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>buffer_inflate_raw1</name>
+          <externalName>bufferInflateRaw1</externalName>
+          <kind>11</kind>
+          <help></help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>1</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>buffer_inflate_raw2</name>
+          <externalName>bufferInflateRaw2</externalName>
+          <kind>11</kind>
+          <help></help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
+          <args>
+            <arg>1</arg>
+            <arg>2</arg>
+            <arg>2</arg>
+          </args>
+        </function>
+        <function>
+          <name>buffer_zlib_init_raw</name>
+          <externalName>bufferZlibInitRaw</externalName>
+          <kind>11</kind>
+          <help></help>
+          <returnType>2</returnType>
+          <argCount>0</argCount>
+          <args/>
+        </function>
+        <function>
+          <name>buffer_zlib_get_status</name>
+          <externalName>bufferZlibGetStatus</externalName>
+          <kind>11</kind>
+          <help></help>
+          <returnType>2</returnType>
+          <argCount>0</argCount>
+          <args/>
+        </function>
+      </functions>
+      <constants>
+        <constant>
+          <name>buffer_zlib_status_ok</name>
+          <value>0</value>
+          <hidden>0</hidden>
+        </constant>
+        <constant>
+          <name>buffer_zlib_status_stream_error</name>
+          <value>-2</value>
+          <hidden>0</hidden>
+        </constant>
+        <constant>
+          <name>buffer_zlib_status_data_error</name>
+          <value>-3</value>
+          <hidden>0</hidden>
+        </constant>
+        <constant>
+          <name>buffer_zlib_status_memory_error</name>
+          <value>-4</value>
+          <hidden>0</hidden>
+        </constant>
+        <constant>
+          <name>buffer_zlib_status_buffer_error</name>
+          <value>-5</value>
           <hidden>0</hidden>
         </constant>
       </constants>

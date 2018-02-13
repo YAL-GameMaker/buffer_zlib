@@ -1,0 +1,1 @@
+javac -d bin BufferZlib.java
