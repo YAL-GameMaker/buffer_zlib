@@ -1,0 +1,1 @@
+ndk-build NDK_HOST_32BIT=1

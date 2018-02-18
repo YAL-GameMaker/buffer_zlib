@@ -25,29 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string></string>
+            <string>b0 = buffer_create(1024, buffer_fixed, 1);
+b1 = -1;
+b2 = -1;
+
+buffer_fill(b0, 0, buffer_u8, 128, 1024);
+</string>
           </argument>
         </arguments>
       </action>
@@ -71,35 +54,37 @@
             <kind>1</kind>
             <string>draw_set_font(fnt_zlib_test);
 draw_set_color(c_white);
-draw_text(5, 5, '[1] Compress#[2] Decompress');
-var k1 = keyboard_check_pressed(ord("1"));
-var k2 = keyboard_check_pressed(ord("2"));
-if (k1 || k2) {
-    var b0 = -1, b1 = -1;
-    repeat (1) {
-        var s0 = get_open_filename("*.*", "");
-        if (!file_exists(s0)) break;
-        b0 = buffer_load(s0);
-        if (b0 &lt; 0) { show_message("Couldn't load buffer."); break; }
-        if (k1) {
+var str = "";
+if (buffer_exists(b0)) str += "Original buffer. Size: " + string(buffer_get_size(b0)) + " bytes, Hash: " + string_copy(buffer_md5(b0, 0, 1024), 0, 8);
+if (buffer_exists(b1)) str += "#Compressed buffer. Size: " + string(buffer_get_size(b1)) + " bytes, Hash: " + string_copy(buffer_md5(b1, 0, 1024), 0, 8);
+if (buffer_exists(b2)) str += "#Decompressed buffer. Size: " + string(buffer_get_size(b2)) + " bytes, Hash: " + string_copy(buffer_md5(b2, 0, 1024), 0, 8);
+draw_text(16, 16, str);
+
+draw_rectangle(32, 160, 192, 240, 0);
+draw_rectangle(288, 160, 448, 240, 0);
+draw_set_color(c_black);
+draw_text(72, 184, "Compress");
+draw_text(320, 184, "Decompress");
+
+if (mouse_check_button_pressed(mb_left)) {
+    if (point_in_rectangle(mouse_x, mouse_y, 32, 160, 192, 240)) {
+        if (buffer_exists(b0)) {
             b1 = buffer_deflate(b0, 0, buffer_get_size(b0), 7);
+            buffer_resize(b1, buffer_tell(b1));
             if (b1 &lt; 0) {
                 show_message("Couldn't deflate, error ID: " + string(buffer_zlib_status));
-                break;
-            }
-        } else {
-            b1 = buffer_inflate(b0, 0, buffer_get_size(b0));
-            if (b1 &lt; 0) {
-                show_message("Couldn't inflate, error ID: " + string(buffer_zlib_status));
-                break;
             }
         }
-        var s1 = get_save_filename("*.*", "");
-        if (s1 == "") break;
-        buffer_save_ext(b1, s1, 0, buffer_tell(b1));
     }
-    if (b0 != -1) buffer_delete(b0);
-    if (b1 != -1) buffer_delete(b1);
+    if (point_in_rectangle(mouse_x, mouse_y, 288, 160, 448, 240)) {
+        if (buffer_exists(b1)) {
+            b2 = buffer_inflate(b1, 0, buffer_get_size(b1));
+            buffer_resize(b2, buffer_tell(b2));
+            if (b1 &lt; 0) {
+                show_message("Couldn't inflate, error ID: " + string(buffer_zlib_status));
+            }
+        }
+    }
 }
 </string>
           </argument>
